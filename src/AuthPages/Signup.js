@@ -16,6 +16,12 @@ export default class Signup extends Component {
 
         // call POST function on auth/signup route to sign up new user and get token
         const user = await signupUser(this.state.email, this.state.password);
+
+        // sets token/user into state and localStorage in app.js - (passing UP to parent)
+        this.props.handleUserChange(user);
+
+        // redirect to Search Page
+        this.props.history.push('/search');
     }
     render() {
         return (

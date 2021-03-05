@@ -16,6 +16,12 @@ export default class Login extends Component {
 
         // use POST function on auth/signin route for returning user
         const user = await loginUser(this.state.email, this.state.password)
+
+        // sets token/user into state and localStorage in app.js - (passing UP to parent)
+        this.props.handleUserChange(user);
+
+        // redirect to User's Favorites Page
+        this.props.history.push('/favorites');
     }
 
     render() {

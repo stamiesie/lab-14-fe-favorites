@@ -25,12 +25,25 @@ export async function loginUser(email, password) {
     return response.body;
 }
 
-export async function getCatalog(query) {
+export async function getMovies(query) {
     const response = await request
         // append the API specific query
         .get(`${URL}/movies?search=${query}`)
-    // would need this is auth is needed in header
+
+    // would need this auth if needed in header
     // .set('Authorization', token)
+
+    // data is in [results] in API
+    return response.body.results;
+}
+
+export async function addFavorite(movieObj, token) {
+    const response = await request
+        .post(`${URL}/api/favorites`)
+        // protected route
+        .set('Authorization', token)
+        .send(movieObj)
 
     return response.body;
 }
+
