@@ -1,7 +1,8 @@
 import request from "superagent";
 
 // swap out localhost link with heroku db link here
-const URL = 'http://localhost:3000';
+// const URL = 'http://localhost:3000';
+const URL = 'https://vast-atoll-45061.herokuapp.com';
 
 
 export async function signupUser(email, password) {
