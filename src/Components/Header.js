@@ -6,10 +6,20 @@ export default class Header extends Component {
         return (
             <div>
                 <NavLink className="nav-button" to="/">Home</NavLink>
-                <NavLink className="nav-button" to="/login">Login</NavLink>
-                <NavLink className="nav-button" to="/signup">Signup</NavLink>
                 <NavLink className="nav-button" to="/search">Search</NavLink>
-                <NavLink className="nav-button" to="/favorites">Favorites</NavLink>
+                {
+                    (!this.props.user || !this.props.user.token) && <>
+                        <NavLink className="nav-button" to="/login">Login</NavLink>
+                        <NavLink className="nav-button" to="/signup">Signup</NavLink>
+                    </>
+                }
+
+                {
+                    this.props.user && this.props.user.token && <>
+                        <NavLink className="nav-button" to="/favorites">Favorites</NavLink>
+                        <button onClick={this.props.handleLogout}>Sign Out</button>
+                    </>
+                }
             </div>
         )
     }

@@ -47,3 +47,19 @@ export async function addFavorite(movieObj, token) {
     return response.body;
 }
 
+export async function getFavorites(token) {
+    const response = await request
+        .get(`${URL}/api/favorites`)
+        .set('Authorization', token)
+
+    return response.body;
+}
+
+export async function deleteFavorite(movieId, token) {
+    const response = await request
+        .put(`${URL}/api/favorites/${movieId}`)
+        .set('Authorization', token)
+
+    return response.body;
+}
+
